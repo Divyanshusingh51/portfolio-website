@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar (same as index.html) -->
+        <div class="sidebar">
+            <!-- Acorn Logo -->
+            <div class="logo">
+                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M60,30 C70,45 90,45 90,60 C90,75 75,85 60,85 C45,85 30,75 30,60 C30,45 50,45 60,30" fill="none" stroke="white" stroke-width="4"/>
+                    <path d="M40,60 C40,60 50,70 60,70 C70,70 80,60 80,60" fill="none" stroke="white" stroke-width="4"/>
+                    <line x1="45" y1="25" x2="35" y2="35" stroke="white" stroke-width="4"/>
+                    <line x1="75" y1="25" x2="85" y2="35" stroke="white" stroke-width="4"/>
+                </svg>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="menu">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="album-covers.html">ALBUM COVERS</a></li>
+                    <li><a href="vr.html">VR</a></li>
+                    <li><a href="graphic-design.html">GRAPHIC DESIGN</a></li>
+                    <li><a href="other-works.html">OTHER WORKS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Dot Separator -->
+            <div class="dot">•</div>
+            
+            <!-- Copyright -->
+            <div class="copyright">© Simone Fougnier 2013</div>
+        </div>
+        
+        <!-- Project Detail Content -->
+        <div class="project-detail">
+            <div class="project-image">
+                <img src="pictures/webimg/garden-of-lucid.jpg" alt="Garden of Lucid">
+            </div>
+            <div class="project-info">
+                <h1>Garden of Lucid</h1>
+                <p>Ambar Lucid LP</p>
+                <p>© Ambar Lucid 2020</p>
+                <div class="project-buttons">
+                    <a href="#" class="play-button">●</a>
+                    <a href="#" class="info-button">○</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple script to load the correct project based on URL parameter
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('id');
+            
+            // You can expand this with your project data
+            const projects = {
+                'garden-of-lucid': {
+                    title: 'Garden of Lucid',
+                    subtitle: 'Ambar Lucid LP',
+                    copyright: '© Ambar Lucid 2020',
+                    image: 'pictures/webimg/garden-of-lucid.jpg'
+                },
+                'soda-island': {
+                    title: 'Tales from Soda Island',
+                    subtitle: 'Album Cover',
+                    copyright: '© 2020',
+                    image: 'pictures/webimg/soda-island.jpg'
+                }
+                // Add more projects as needed
+            };
+            
+            if (projectId && projects[projectId]) {
+                const project = projects[projectId];
+                document.querySelector('.project-image img').src = project.image;
+                document.querySelector('.project-info h1').textContent = project.title;
+                document.querySelector('.project-info p').textContent = project.subtitle;
+                document.querySelector('.project-info p:nth-child(3)').textContent = project.copyright;
+                document.title = project.title + ' | Portfolio';
+            }
+        });
+    </script>
+</body>
+</html>
